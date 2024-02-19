@@ -1,0 +1,332 @@
+// !REVIEW THIS SET AND THE BOOTSTRAP PROPERTY SET
+html {
+  font-size: 1rem !important;
+}
+// Colors
+$color-light-green: #7ed56f;
+$color-medium-green: #55c57a;
+$color-dark-green: #28b485;
+$color-dark: #000;
+$color-white: #fff;
+$color-light-gray-1: #f7f7f7;
+$color-light-orange: #ffb900;
+$color-dark-orange: #ff7730;
+$color-light-blue: #2998ff;
+$color-dark-blue: #5643fa;
+
+body {
+  font-family: "Lato", sans-serif !important;
+  background-color: $color-light-gray-1;
+}
+.border-red {
+  border: 1px solid red;
+}
+
+.secondary-heading {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-image: linear-gradient(
+    to right,
+    $color-light-green,
+    $color-dark-green
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba($color-dark, 0.2);
+  }
+}
+.tertiary-heading {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+// Sticky Navbar
+.navbar {
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-sticky {
+  background: #28b485;
+  opacity: 0.7;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+}
+
+// ******** Header
+#home_page {
+  // Header
+  .header {
+    padding: 0;
+    height: 95vh;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-light-green, 0.8),
+        rgba($color-dark-green, 0.8)
+      ),
+      url(../img/hero.jpg);
+    background-size: cover;
+    background-position: top;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    & h1 {
+      // To fix the shaking of the element during the transition
+      backface-visibility: hidden;
+    }
+
+    & .main-heading {
+      letter-spacing: 27px;
+
+      animation-name: moveInLeft;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+      // animation-iteration-count: 3;
+      // animation-delay: 3s;
+    }
+    & .main-slogan {
+      letter-spacing: 9px;
+
+      animation: moveInRight 1s ease-out;
+      // animation-name: moveInRight;
+      // animation-duration: 1s;
+      // animation-timing-function: ease-out;
+    }
+    & .header-box {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  // About Section
+  .section-about {
+    margin-top: -20vh;
+
+    // & p:not(:last-child) {
+    //   margin-bottom: 3rem;
+    //   border: 1px red solid;
+    // }
+
+    & .container-img {
+      position: relative;
+
+      // .container-img-about
+      &-about {
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($color-dark, 0.4);
+        position: absolute;
+        z-index: 10;
+        transition: all 0.3s;
+        outline-offset: 2rem;
+
+        // .container-img-about-1
+        &-1 {
+          left: 0;
+          top: -2rem;
+        }
+        &-2 {
+          right: 0;
+          top: 2rem;
+        }
+        &-3 {
+          left: 20%;
+          top: 10rem;
+        }
+        &:hover {
+          outline: 0.5rem solid $color-light-green;
+
+          transform: scale(1.05) translateY(-0.5rem);
+          box-shadow: 0 2.5rem 4rem rgba($color-dark, 0.5);
+          z-index: 20;
+        }
+      }
+    }
+
+    // !Fix
+    // When hovering the img container, select the img that is not hovered (meaning of the code below)
+    &:hover &-about:not(:hover) {
+      transform: scale(0.5);
+      border: 5px solid red;
+    }
+  }
+
+  // Features Section
+  .features {
+    &-section {
+      background-image: linear-gradient(
+          to right bottom,
+          rgba($color-light-green, 0.8),
+          rgba($color-dark-green, 0.8)
+        ),
+        url(../img/nat-4.jpg);
+      background-size: cover;
+      transform: skewY(-7deg);
+    }
+    &-container {
+      transform: skewY(7deg);
+    }
+
+    &-box {
+      background-color: rgba($color-white, 0.8);
+      box-shadow: 0 1.5rem 4rem rgba($color-dark, 0.15);
+      transition: all 0.3s ease-in-out;
+
+      &-icon {
+        font-size: 5rem;
+        background-image: linear-gradient(
+          to right,
+          $color-light-green,
+          $color-dark-green
+        );
+        -webkit-background-clip: text;
+        color: transparent;
+        transition: all 0.2s;
+      }
+      &:hover {
+        transform: translateY(-1.5rem);
+      }
+    }
+  }
+}
+
+.card-box {
+  box-shadow: 0 1.5rem 4rem rgba($color-dark, 0.15);
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+
+  position: relative;
+  &:hover {
+    .card-box-content {
+      z-index: 100;
+      animation-name: moveInUp;
+      animation-duration: 1s;
+    }
+  }
+
+  &-content-1 {
+    background-image: linear-gradient(
+      to right bottom,
+      $color-light-orange,
+      $color-dark-orange
+    );
+  }
+  &-content-2 {
+    background-image: linear-gradient(
+      to right bottom,
+      $color-light-green,
+      $color-dark-green
+    );
+  }
+  &-content-3 {
+    background-image: linear-gradient(
+      to right bottom,
+      $color-light-blue,
+      $color-dark-blue
+    );
+  }
+  &-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -5;
+    width: 100%;
+    height: 100%;
+    border: 5px solid red;
+
+    transform: translateY(100%);
+  }
+}
+// Buttons
+.btn {
+  &:link {
+    position: relative;
+    transition: all 0.3s;
+
+    animation: moveInUp 0.5s ease-out;
+    // The code below will apply the styles of the 0% to the element before the animation starts
+    animation-fill-mode: backwards;
+    // animation-delay: 0.75s;
+  }
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba($color-dark, 0.2);
+  }
+  &:hover {
+    transform: translateY(-3px);
+    // box-shadow: X direction Y direction blur color;
+    box-shadow: 0 7px 15px rgba($color-dark, 0.5);
+  }
+}
+
+.btn-2 {
+  &:link,
+  &:visited {
+    color: $color-light-green;
+    position: inline-block;
+    padding: 0.5rem;
+    text-decoration: none;
+    border-bottom: 1px solid $color-light-green;
+    transition: all 0.2s;
+  }
+  &:hover {
+    background-color: $color-light-green;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-dark, 0.15);
+    transform: translateY(-2px);
+  }
+  &:active {
+    box-shadow: 0 0.5rem 1 rem rgba($color-dark, 0.15);
+    transform: translateY(0);
+  }
+}
+
+// ******* Animations
+@keyframes moveInLeft {
+  // Start point
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(10px);
+  }
+
+  // Final point
+  100% {
+    opacity: 1;
+    // original state is translate 0
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ***************
