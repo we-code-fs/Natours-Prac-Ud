@@ -26,6 +26,7 @@ body {
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
+  margin-bottom: 8rem;
   background-image: linear-gradient(
     to right,
     $color-light-green,
@@ -69,6 +70,7 @@ body {
       url(../img/hero.jpg);
     background-size: cover;
     background-position: top;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 
     & h1 {
@@ -183,6 +185,7 @@ body {
           $color-dark-green
         );
         -webkit-background-clip: text;
+        background-clip: text;
         color: transparent;
         transition: all 0.2s;
       }
@@ -193,51 +196,105 @@ body {
   }
 }
 
-.card-box {
+.tours-box {
   box-shadow: 0 1.5rem 4rem rgba($color-dark, 0.15);
-  transition: all 0.4s ease-in-out;
-  overflow: hidden;
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  height: 30rem;
 
   position: relative;
-  &:hover {
-    .card-box-content {
-      z-index: 100;
-      animation-name: moveInUp;
-      animation-duration: 1s;
+
+  &-face {
+    transition: all 0.8s ease;
+    overflow: hidden;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    // To hide the back part of the element
+    backface-visibility: hidden;
+
+    &-front {
+    }
+
+    &-back {
+      transform: rotateY(180deg);
+      height: 100%;
     }
   }
 
-  &-content-1 {
+  &:hover &-face-front {
+    transform: rotateY(-180deg);
+  }
+  &:hover &-face-back {
+    transform: rotateY(0deg);
+  }
+
+  &-back-1 {
     background-image: linear-gradient(
       to right bottom,
       $color-light-orange,
       $color-dark-orange
     );
   }
-  &-content-2 {
+  &-back-2 {
     background-image: linear-gradient(
       to right bottom,
       $color-light-green,
       $color-dark-green
     );
   }
-  &-content-3 {
+  &-back-3 {
     background-image: linear-gradient(
       to right bottom,
       $color-light-blue,
       $color-dark-blue
     );
   }
-  &-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -5;
-    width: 100%;
-    height: 100%;
-    border: 5px solid red;
+  &-pic {
+    background-size: cover;
+    height: 15rem;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 
-    transform: translateY(100%);
+    &-1 {
+      // I move up 1 level because this code will be written later in the css styles file and based on its location i need to get the picture path
+      background-image: linear-gradient(
+          to right bottom,
+          $color-light-orange,
+          $color-dark-orange
+        ),
+        url(../img/nat-5.jpg);
+    }
+    &-2 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-light-green,
+          $color-dark-green
+        ),
+        url();
+    }
+    &-3 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-light-blue,
+          $color-dark-blue
+        ),
+        url();
+    }
+  }
+  &-title {
+    text-transform: uppercase;
+    // font-weight: lighter;
+    color: $color-white;
+    background-color: $color-dark-orange;
+
+    position: absolute;
+    z-index: 20;
+    right: 0;
+    top: 40%;
   }
 }
 // Buttons
